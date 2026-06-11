@@ -3,62 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\.env||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\core\\rate_limiter.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\app\\core\\rate_limiter.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\utils\\token_blacklist.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\app\\utils\\token_blacklist.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\models\\base.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\app\\models\\base.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\schemas\\common.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\app\\schemas\\common.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\main.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\app\\main.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\api\\deps.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\app\\api\\deps.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\schemas\\auth.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\app\\schemas\\auth.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\core\\security.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\app\\core\\security.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\api\\routers\\auth.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\app\\api\\routers\\auth.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\alembic\\versions\\0001_initial.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\alembic\\versions\\0001_initial.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\alembic.ini||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\alembic.ini||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\core\\config.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\app\\core\\config.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\requirements.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\requirements.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\App.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\App.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
@@ -85,6 +29,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\.gitingnore1||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.gitingnore1||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\.env||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\nginx\\nginx.conf||{3B902123-F8A7-4915-9F01-361F908088D0}",
@@ -166,349 +114,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 13,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "rate_limiter.py",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\core\\rate_limiter.py",
-              "RelativeDocumentMoniker": "backend\\app\\core\\rate_limiter.py",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\core\\rate_limiter.py",
-              "RelativeToolTip": "backend\\app\\core\\rate_limiter.py",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHeSURBVDhPpVMxa1NRFP7ebZLSlgaltNpSVCySRUxL0NAh4FJpHWpxcZAUBEPG/AKHDsVBN5eGrCnoYKCDoDiUCKKBjtZBUZtJ2ojYJr40ue\u002B\u002B47k3VzD0hQr94OOed8853/k47z2cCETk2NAgk8mQDQMhhFjK5/Mb9vEotIDruoEsFovEzVvZbPaWLTcQ9uxCpVLp4l\u002Bk0\u002BlEPB5/wIPm7RVC9uxCMpm0UTdKpRKi0WiCQy3wUt8FCvw7VSNxbRapG4voDwucGgyjXC7bzH84ePt1HysbH/GhWoNstzA1OoSFhZuxQqFg8sfu4FutAd\u002BT8KSEYm7v7GJ0YnLClgYLaAcjU9N4Vx9Dda8OBz7OjwywSNsIXY39vEL7TxWpxv2eO3hWHUZ19xc8ti25UdvXzdpNWH0BDj8JiLOrPXfweOu9mRgRhOXUEPr7IiBfYeacB9HaBNRvQH4f6\u002BlgMERwGxJP7grEoq9shj9Uz\u002BVGpmIi4vXcwdzlcePgzLAuZPiSGw869Jg\u002Biw1Mvw50oLGcuoh71y8h1HwB1Js8UfFLnwScNnBhdYVLWsy1IwK5XM5GHaw9uu0LeSCMddZA32lz7zjOQxMcByK1SPU3O/Rjnai2fkjNz8/5L77TyQJ/AJc67LNf3QeWAAAAAElFTkSuQmCC",
-              "WhenOpened": "2026-06-11T12:44:17.404Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "token_blacklist.py",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\utils\\token_blacklist.py",
-              "RelativeDocumentMoniker": "backend\\app\\utils\\token_blacklist.py",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\utils\\token_blacklist.py",
-              "RelativeToolTip": "backend\\app\\utils\\token_blacklist.py",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAiwC4AAAAiAAAAAAAAAA==",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHeSURBVDhPpVMxa1NRFP7ebZLSlgaltNpSVCySRUxL0NAh4FJpHWpxcZAUBEPG/AKHDsVBN5eGrCnoYKCDoDiUCKKBjtZBUZtJ2ojYJr40ue\u002B\u002B47k3VzD0hQr94OOed8853/k47z2cCETk2NAgk8mQDQMhhFjK5/Mb9vEotIDruoEsFovEzVvZbPaWLTcQ9uxCpVLp4l\u002Bk0\u002BlEPB5/wIPm7RVC9uxCMpm0UTdKpRKi0WiCQy3wUt8FCvw7VSNxbRapG4voDwucGgyjXC7bzH84ePt1HysbH/GhWoNstzA1OoSFhZuxQqFg8sfu4FutAd\u002BT8KSEYm7v7GJ0YnLClgYLaAcjU9N4Vx9Dda8OBz7OjwywSNsIXY39vEL7TxWpxv2eO3hWHUZ19xc8ti25UdvXzdpNWH0BDj8JiLOrPXfweOu9mRgRhOXUEPr7IiBfYeacB9HaBNRvQH4f6\u002BlgMERwGxJP7grEoq9shj9Uz\u002BVGpmIi4vXcwdzlcePgzLAuZPiSGw869Jg\u002Biw1Mvw50oLGcuoh71y8h1HwB1Js8UfFLnwScNnBhdYVLWsy1IwK5XM5GHaw9uu0LeSCMddZA32lz7zjOQxMcByK1SPU3O/Rjnai2fkjNz8/5L77TyQJ/AJc67LNf3QeWAAAAAElFTkSuQmCC",
-              "WhenOpened": "2026-06-11T12:43:23.299Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "base.py",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\models\\base.py",
-              "RelativeDocumentMoniker": "backend\\app\\models\\base.py",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\models\\base.py",
-              "RelativeToolTip": "backend\\app\\models\\base.py",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAFAAAAAAAAAA==",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHeSURBVDhPpVMxa1NRFP7ebZLSlgaltNpSVCySRUxL0NAh4FJpHWpxcZAUBEPG/AKHDsVBN5eGrCnoYKCDoDiUCKKBjtZBUZtJ2ojYJr40ue\u002B\u002B47k3VzD0hQr94OOed8853/k47z2cCETk2NAgk8mQDQMhhFjK5/Mb9vEotIDruoEsFovEzVvZbPaWLTcQ9uxCpVLp4l\u002Bk0\u002BlEPB5/wIPm7RVC9uxCMpm0UTdKpRKi0WiCQy3wUt8FCvw7VSNxbRapG4voDwucGgyjXC7bzH84ePt1HysbH/GhWoNstzA1OoSFhZuxQqFg8sfu4FutAd\u002BT8KSEYm7v7GJ0YnLClgYLaAcjU9N4Vx9Dda8OBz7OjwywSNsIXY39vEL7TxWpxv2eO3hWHUZ19xc8ti25UdvXzdpNWH0BDj8JiLOrPXfweOu9mRgRhOXUEPr7IiBfYeacB9HaBNRvQH4f6\u002BlgMERwGxJP7grEoq9shj9Uz\u002BVGpmIi4vXcwdzlcePgzLAuZPiSGw869Jg\u002Biw1Mvw50oLGcuoh71y8h1HwB1Js8UfFLnwScNnBhdYVLWsy1IwK5XM5GHaw9uu0LeSCMddZA32lz7zjOQxMcByK1SPU3O/Rjnai2fkjNz8/5L77TyQJ/AJc67LNf3QeWAAAAAElFTkSuQmCC",
-              "WhenOpened": "2026-06-11T12:42:01.081Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "common.py",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\schemas\\common.py",
-              "RelativeDocumentMoniker": "backend\\app\\schemas\\common.py",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\schemas\\common.py",
-              "RelativeToolTip": "backend\\app\\schemas\\common.py",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAmAAAAAAAAAA==",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHeSURBVDhPpVMxa1NRFP7ebZLSlgaltNpSVCySRUxL0NAh4FJpHWpxcZAUBEPG/AKHDsVBN5eGrCnoYKCDoDiUCKKBjtZBUZtJ2ojYJr40ue\u002B\u002B47k3VzD0hQr94OOed8853/k47z2cCETk2NAgk8mQDQMhhFjK5/Mb9vEotIDruoEsFovEzVvZbPaWLTcQ9uxCpVLp4l\u002Bk0\u002BlEPB5/wIPm7RVC9uxCMpm0UTdKpRKi0WiCQy3wUt8FCvw7VSNxbRapG4voDwucGgyjXC7bzH84ePt1HysbH/GhWoNstzA1OoSFhZuxQqFg8sfu4FutAd\u002BT8KSEYm7v7GJ0YnLClgYLaAcjU9N4Vx9Dda8OBz7OjwywSNsIXY39vEL7TxWpxv2eO3hWHUZ19xc8ti25UdvXzdpNWH0BDj8JiLOrPXfweOu9mRgRhOXUEPr7IiBfYeacB9HaBNRvQH4f6\u002BlgMERwGxJP7grEoq9shj9Uz\u002BVGpmIi4vXcwdzlcePgzLAuZPiSGw869Jg\u002Biw1Mvw50oLGcuoh71y8h1HwB1Js8UfFLnwScNnBhdYVLWsy1IwK5XM5GHaw9uu0LeSCMddZA32lz7zjOQxMcByK1SPU3O/Rjnai2fkjNz8/5L77TyQJ/AJc67LNf3QeWAAAAAElFTkSuQmCC",
-              "WhenOpened": "2026-06-11T12:41:39.684Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "main.py",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\main.py",
-              "RelativeDocumentMoniker": "backend\\app\\main.py",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\main.py",
-              "RelativeToolTip": "backend\\app\\main.py",
-              "ViewState": "AgIAADsAAAAAAAAAAAAiwGIAAAA0AAAAAAAAAA==",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHeSURBVDhPpVMxa1NRFP7ebZLSlgaltNpSVCySRUxL0NAh4FJpHWpxcZAUBEPG/AKHDsVBN5eGrCnoYKCDoDiUCKKBjtZBUZtJ2ojYJr40ue\u002B\u002B47k3VzD0hQr94OOed8853/k47z2cCETk2NAgk8mQDQMhhFjK5/Mb9vEotIDruoEsFovEzVvZbPaWLTcQ9uxCpVLp4l\u002Bk0\u002BlEPB5/wIPm7RVC9uxCMpm0UTdKpRKi0WiCQy3wUt8FCvw7VSNxbRapG4voDwucGgyjXC7bzH84ePt1HysbH/GhWoNstzA1OoSFhZuxQqFg8sfu4FutAd\u002BT8KSEYm7v7GJ0YnLClgYLaAcjU9N4Vx9Dda8OBz7OjwywSNsIXY39vEL7TxWpxv2eO3hWHUZ19xc8ti25UdvXzdpNWH0BDj8JiLOrPXfweOu9mRgRhOXUEPr7IiBfYeacB9HaBNRvQH4f6\u002BlgMERwGxJP7grEoq9shj9Uz\u002BVGpmIi4vXcwdzlcePgzLAuZPiSGw869Jg\u002Biw1Mvw50oLGcuoh71y8h1HwB1Js8UfFLnwScNnBhdYVLWsy1IwK5XM5GHaw9uu0LeSCMddZA32lz7zjOQxMcByK1SPU3O/Rjnai2fkjNz8/5L77TyQJ/AJc67LNf3QeWAAAAAElFTkSuQmCC",
-              "WhenOpened": "2026-06-11T12:41:17.89Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "deps.py",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\api\\deps.py",
-              "RelativeDocumentMoniker": "backend\\app\\api\\deps.py",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\api\\deps.py",
-              "RelativeToolTip": "backend\\app\\api\\deps.py",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAiwEUAAAAPAAAAAAAAAA==",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHeSURBVDhPpVMxa1NRFP7ebZLSlgaltNpSVCySRUxL0NAh4FJpHWpxcZAUBEPG/AKHDsVBN5eGrCnoYKCDoDiUCKKBjtZBUZtJ2ojYJr40ue\u002B\u002B47k3VzD0hQr94OOed8853/k47z2cCETk2NAgk8mQDQMhhFjK5/Mb9vEotIDruoEsFovEzVvZbPaWLTcQ9uxCpVLp4l\u002Bk0\u002BlEPB5/wIPm7RVC9uxCMpm0UTdKpRKi0WiCQy3wUt8FCvw7VSNxbRapG4voDwucGgyjXC7bzH84ePt1HysbH/GhWoNstzA1OoSFhZuxQqFg8sfu4FutAd\u002BT8KSEYm7v7GJ0YnLClgYLaAcjU9N4Vx9Dda8OBz7OjwywSNsIXY39vEL7TxWpxv2eO3hWHUZ19xc8ti25UdvXzdpNWH0BDj8JiLOrPXfweOu9mRgRhOXUEPr7IiBfYeacB9HaBNRvQH4f6\u002BlgMERwGxJP7grEoq9shj9Uz\u002BVGpmIi4vXcwdzlcePgzLAuZPiSGw869Jg\u002Biw1Mvw50oLGcuoh71y8h1HwB1Js8UfFLnwScNnBhdYVLWsy1IwK5XM5GHaw9uu0LeSCMddZA32lz7zjOQxMcByK1SPU3O/Rjnai2fkjNz8/5L77TyQJ/AJc67LNf3QeWAAAAAElFTkSuQmCC",
-              "WhenOpened": "2026-06-11T12:40:54.224Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "auth.py",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\schemas\\auth.py",
-              "RelativeDocumentMoniker": "backend\\app\\schemas\\auth.py",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\schemas\\auth.py",
-              "RelativeToolTip": "backend\\app\\schemas\\auth.py",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAsAAAAAAAAAA==",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHeSURBVDhPpVMxa1NRFP7ebZLSlgaltNpSVCySRUxL0NAh4FJpHWpxcZAUBEPG/AKHDsVBN5eGrCnoYKCDoDiUCKKBjtZBUZtJ2ojYJr40ue\u002B\u002B47k3VzD0hQr94OOed8853/k47z2cCETk2NAgk8mQDQMhhFjK5/Mb9vEotIDruoEsFovEzVvZbPaWLTcQ9uxCpVLp4l\u002Bk0\u002BlEPB5/wIPm7RVC9uxCMpm0UTdKpRKi0WiCQy3wUt8FCvw7VSNxbRapG4voDwucGgyjXC7bzH84ePt1HysbH/GhWoNstzA1OoSFhZuxQqFg8sfu4FutAd\u002BT8KSEYm7v7GJ0YnLClgYLaAcjU9N4Vx9Dda8OBz7OjwywSNsIXY39vEL7TxWpxv2eO3hWHUZ19xc8ti25UdvXzdpNWH0BDj8JiLOrPXfweOu9mRgRhOXUEPr7IiBfYeacB9HaBNRvQH4f6\u002BlgMERwGxJP7grEoq9shj9Uz\u002BVGpmIi4vXcwdzlcePgzLAuZPiSGw869Jg\u002Biw1Mvw50oLGcuoh71y8h1HwB1Js8UfFLnwScNnBhdYVLWsy1IwK5XM5GHaw9uu0LeSCMddZA32lz7zjOQxMcByK1SPU3O/Rjnai2fkjNz8/5L77TyQJ/AJc67LNf3QeWAAAAAElFTkSuQmCC",
-              "WhenOpened": "2026-06-11T12:40:30.209Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "security.py",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\core\\security.py",
-              "RelativeDocumentMoniker": "backend\\app\\core\\security.py",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\core\\security.py",
-              "RelativeToolTip": "backend\\app\\core\\security.py",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAiwEQAAAASAAAAAAAAAA==",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHeSURBVDhPpVMxa1NRFP7ebZLSlgaltNpSVCySRUxL0NAh4FJpHWpxcZAUBEPG/AKHDsVBN5eGrCnoYKCDoDiUCKKBjtZBUZtJ2ojYJr40ue\u002B\u002B47k3VzD0hQr94OOed8853/k47z2cCETk2NAgk8mQDQMhhFjK5/Mb9vEotIDruoEsFovEzVvZbPaWLTcQ9uxCpVLp4l\u002Bk0\u002BlEPB5/wIPm7RVC9uxCMpm0UTdKpRKi0WiCQy3wUt8FCvw7VSNxbRapG4voDwucGgyjXC7bzH84ePt1HysbH/GhWoNstzA1OoSFhZuxQqFg8sfu4FutAd\u002BT8KSEYm7v7GJ0YnLClgYLaAcjU9N4Vx9Dda8OBz7OjwywSNsIXY39vEL7TxWpxv2eO3hWHUZ19xc8ti25UdvXzdpNWH0BDj8JiLOrPXfweOu9mRgRhOXUEPr7IiBfYeacB9HaBNRvQH4f6\u002BlgMERwGxJP7grEoq9shj9Uz\u002BVGpmIi4vXcwdzlcePgzLAuZPiSGw869Jg\u002Biw1Mvw50oLGcuoh71y8h1HwB1Js8UfFLnwScNnBhdYVLWsy1IwK5XM5GHaw9uu0LeSCMddZA32lz7zjOQxMcByK1SPU3O/Rjnai2fkjNz8/5L77TyQJ/AJc67LNf3QeWAAAAAElFTkSuQmCC",
-              "WhenOpened": "2026-06-11T12:40:12.833Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "auth.py",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\api\\routers\\auth.py",
-              "RelativeDocumentMoniker": "backend\\app\\api\\routers\\auth.py",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\api\\routers\\auth.py",
-              "RelativeToolTip": "backend\\app\\api\\routers\\auth.py",
-              "ViewState": "AgIAAHMAAAAAAAAAAAAiwH0AAABIAAAAAAAAAA==",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHeSURBVDhPpVMxa1NRFP7ebZLSlgaltNpSVCySRUxL0NAh4FJpHWpxcZAUBEPG/AKHDsVBN5eGrCnoYKCDoDiUCKKBjtZBUZtJ2ojYJr40ue\u002B\u002B47k3VzD0hQr94OOed8853/k47z2cCETk2NAgk8mQDQMhhFjK5/Mb9vEotIDruoEsFovEzVvZbPaWLTcQ9uxCpVLp4l\u002Bk0\u002BlEPB5/wIPm7RVC9uxCMpm0UTdKpRKi0WiCQy3wUt8FCvw7VSNxbRapG4voDwucGgyjXC7bzH84ePt1HysbH/GhWoNstzA1OoSFhZuxQqFg8sfu4FutAd\u002BT8KSEYm7v7GJ0YnLClgYLaAcjU9N4Vx9Dda8OBz7OjwywSNsIXY39vEL7TxWpxv2eO3hWHUZ19xc8ti25UdvXzdpNWH0BDj8JiLOrPXfweOu9mRgRhOXUEPr7IiBfYeacB9HaBNRvQH4f6\u002BlgMERwGxJP7grEoq9shj9Uz\u002BVGpmIi4vXcwdzlcePgzLAuZPiSGw869Jg\u002Biw1Mvw50oLGcuoh71y8h1HwB1Js8UfFLnwScNnBhdYVLWsy1IwK5XM5GHaw9uu0LeSCMddZA32lz7zjOQxMcByK1SPU3O/Rjnai2fkjNz8/5L77TyQJ/AJc67LNf3QeWAAAAAElFTkSuQmCC",
-              "WhenOpened": "2026-06-11T12:38:46.863Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "0001_initial.py",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\alembic\\versions\\0001_initial.py",
-              "RelativeDocumentMoniker": "backend\\alembic\\versions\\0001_initial.py",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\alembic\\versions\\0001_initial.py",
-              "RelativeToolTip": "backend\\alembic\\versions\\0001_initial.py",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHeSURBVDhPpVMxa1NRFP7ebZLSlgaltNpSVCySRUxL0NAh4FJpHWpxcZAUBEPG/AKHDsVBN5eGrCnoYKCDoDiUCKKBjtZBUZtJ2ojYJr40ue\u002B\u002B47k3VzD0hQr94OOed8853/k47z2cCETk2NAgk8mQDQMhhFjK5/Mb9vEotIDruoEsFovEzVvZbPaWLTcQ9uxCpVLp4l\u002Bk0\u002BlEPB5/wIPm7RVC9uxCMpm0UTdKpRKi0WiCQy3wUt8FCvw7VSNxbRapG4voDwucGgyjXC7bzH84ePt1HysbH/GhWoNstzA1OoSFhZuxQqFg8sfu4FutAd\u002BT8KSEYm7v7GJ0YnLClgYLaAcjU9N4Vx9Dda8OBz7OjwywSNsIXY39vEL7TxWpxv2eO3hWHUZ19xc8ti25UdvXzdpNWH0BDj8JiLOrPXfweOu9mRgRhOXUEPr7IiBfYeacB9HaBNRvQH4f6\u002BlgMERwGxJP7grEoq9shj9Uz\u002BVGpmIi4vXcwdzlcePgzLAuZPiSGw869Jg\u002Biw1Mvw50oLGcuoh71y8h1HwB1Js8UfFLnwScNnBhdYVLWsy1IwK5XM5GHaw9uu0LeSCMddZA32lz7zjOQxMcByK1SPU3O/Rjnai2fkjNz8/5L77TyQJ/AJc67LNf3QeWAAAAAElFTkSuQmCC",
-              "WhenOpened": "2026-06-11T12:37:34.545Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "alembic.ini",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\alembic.ini",
-              "RelativeDocumentMoniker": "backend\\alembic.ini",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\alembic.ini",
-              "RelativeToolTip": "backend\\alembic.ini",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002768|",
-              "WhenOpened": "2026-06-11T12:17:52.688Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "config.py",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\core\\config.py",
-              "RelativeDocumentMoniker": "backend\\app\\core\\config.py",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\app\\core\\config.py",
-              "RelativeToolTip": "backend\\app\\core\\config.py",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEYAAAAVAAAAAAAAAA==",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHeSURBVDhPpVMxa1NRFP7ebZLSlgaltNpSVCySRUxL0NAh4FJpHWpxcZAUBEPG/AKHDsVBN5eGrCnoYKCDoDiUCKKBjtZBUZtJ2ojYJr40ue\u002B\u002B47k3VzD0hQr94OOed8853/k47z2cCETk2NAgk8mQDQMhhFjK5/Mb9vEotIDruoEsFovEzVvZbPaWLTcQ9uxCpVLp4l\u002Bk0\u002BlEPB5/wIPm7RVC9uxCMpm0UTdKpRKi0WiCQy3wUt8FCvw7VSNxbRapG4voDwucGgyjXC7bzH84ePt1HysbH/GhWoNstzA1OoSFhZuxQqFg8sfu4FutAd\u002BT8KSEYm7v7GJ0YnLClgYLaAcjU9N4Vx9Dda8OBz7OjwywSNsIXY39vEL7TxWpxv2eO3hWHUZ19xc8ti25UdvXzdpNWH0BDj8JiLOrPXfweOu9mRgRhOXUEPr7IiBfYeacB9HaBNRvQH4f6\u002BlgMERwGxJP7grEoq9shj9Uz\u002BVGpmIi4vXcwdzlcePgzLAuZPiSGw869Jg\u002Biw1Mvw50oLGcuoh71y8h1HwB1Js8UfFLnwScNnBhdYVLWsy1IwK5XM5GHaw9uu0LeSCMddZA32lz7zjOQxMcByK1SPU3O/Rjnai2fkjNz8/5L77TyQJ/AJc67LNf3QeWAAAAAElFTkSuQmCC",
-              "WhenOpened": "2026-06-11T12:16:50.934Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "requirements.txt",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\requirements.txt",
-              "RelativeDocumentMoniker": "backend\\requirements.txt",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\requirements.txt",
-              "RelativeToolTip": "backend\\requirements.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2026-06-11T12:15:13.257Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": ".env",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\.env",
-              "RelativeDocumentMoniker": "backend\\.env",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\.env",
-              "RelativeToolTip": "backend\\.env",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEkAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-06-11T10:33:04.183Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "auth.service.ts",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\services\\auth.service.ts",
-              "RelativeDocumentMoniker": "src\\services\\auth.service.ts",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\services\\auth.service.ts",
-              "RelativeToolTip": "src\\services\\auth.service.ts",
-              "ViewState": "AgIAAHEAAAAAAAAAAAAiwJgAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-06-11T11:51:59.118Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "validateEnv.ts",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\config\\validateEnv.ts",
-              "RelativeDocumentMoniker": "src\\config\\validateEnv.ts",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\config\\validateEnv.ts",
-              "RelativeToolTip": "src\\config\\validateEnv.ts",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAcwCgAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-06-11T11:49:37.61Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": ".gitingnore1",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\.gitingnore1",
-              "RelativeDocumentMoniker": ".gitingnore1",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\.gitingnore1",
-              "RelativeToolTip": ".gitingnore1",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-06-11T11:48:43.693Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "nginx.conf",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\nginx\\nginx.conf",
-              "RelativeDocumentMoniker": "nginx\\nginx.conf",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\nginx\\nginx.conf",
-              "RelativeToolTip": "nginx\\nginx.conf",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAwC0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-06-11T11:46:57.81Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "Dockerfile",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\frontend\\Dockerfile",
-              "RelativeDocumentMoniker": "frontend\\Dockerfile",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\frontend\\Dockerfile",
-              "RelativeToolTip": "frontend\\Dockerfile",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAwCgAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-06-11T11:46:27.426Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "Dockerfile",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\Dockerfile",
-              "RelativeDocumentMoniker": "backend\\Dockerfile",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\Dockerfile",
-              "RelativeToolTip": "backend\\Dockerfile",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-06-11T11:45:21.14Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "referral.util.ts",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\utils\\referral.util.ts",
-              "RelativeDocumentMoniker": "src\\utils\\referral.util.ts",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\utils\\referral.util.ts",
-              "RelativeToolTip": "src\\utils\\referral.util.ts",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-06-11T11:42:35.223Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "security.yml",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\workflows\\security.yml",
-              "RelativeDocumentMoniker": "workflows\\security.yml",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\workflows\\security.yml",
-              "RelativeToolTip": "workflows\\security.yml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2026-06-11T11:41:45.826Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "package.json",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\package.json",
-              "RelativeDocumentMoniker": "package.json",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\package.json",
-              "RelativeToolTip": "package.json",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAC0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-06-11T11:39:05.021Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "vite.config.ts",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\vite.config.ts",
-              "RelativeDocumentMoniker": "vite.config.ts",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\vite.config.ts",
-              "RelativeToolTip": "vite.config.ts",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-06-11T11:35:42.117Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "product.validator.ts",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\validators\\product.validator.ts",
-              "RelativeDocumentMoniker": "src\\validators\\product.validator.ts",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\validators\\product.validator.ts",
-              "RelativeToolTip": "src\\validators\\product.validator.ts",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAiwFUAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-06-11T11:10:00.155Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "App.tsx",
-              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\App.tsx",
-              "RelativeDocumentMoniker": "src\\App.tsx",
-              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\App.tsx",
-              "RelativeToolTip": "src\\App.tsx",
-              "ViewState": "AgIAAFgAAAAAAAAAAAAiwH8AAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-06-11T10:45:46.273Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
               "Title": "axios.instance.ts",
               "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\api\\axios.instance.ts",
               "RelativeDocumentMoniker": "src\\api\\axios.instance.ts",
@@ -521,7 +131,163 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 3,
+              "Title": "auth.service.ts",
+              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\services\\auth.service.ts",
+              "RelativeDocumentMoniker": "src\\services\\auth.service.ts",
+              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\services\\auth.service.ts",
+              "RelativeToolTip": "src\\services\\auth.service.ts",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAiwJgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-06-11T11:51:59.118Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "validateEnv.ts",
+              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\config\\validateEnv.ts",
+              "RelativeDocumentMoniker": "src\\config\\validateEnv.ts",
+              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\config\\validateEnv.ts",
+              "RelativeToolTip": "src\\config\\validateEnv.ts",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAcwCgAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-06-11T11:49:37.61Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": ".gitingnore1",
+              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\.gitingnore1",
+              "RelativeDocumentMoniker": ".gitingnore1",
+              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\.gitingnore1",
+              "RelativeToolTip": ".gitingnore1",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-06-11T11:48:43.693Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "nginx.conf",
+              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\nginx\\nginx.conf",
+              "RelativeDocumentMoniker": "nginx\\nginx.conf",
+              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\nginx\\nginx.conf",
+              "RelativeToolTip": "nginx\\nginx.conf",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwC0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-06-11T11:46:57.81Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\frontend\\Dockerfile",
+              "RelativeDocumentMoniker": "frontend\\Dockerfile",
+              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\frontend\\Dockerfile",
+              "RelativeToolTip": "frontend\\Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAwCgAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-06-11T11:46:27.426Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\Dockerfile",
+              "RelativeDocumentMoniker": "backend\\Dockerfile",
+              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\Dockerfile",
+              "RelativeToolTip": "backend\\Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-06-11T11:45:21.14Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "referral.util.ts",
+              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\utils\\referral.util.ts",
+              "RelativeDocumentMoniker": "src\\utils\\referral.util.ts",
+              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\utils\\referral.util.ts",
+              "RelativeToolTip": "src\\utils\\referral.util.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-06-11T11:42:35.223Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "security.yml",
+              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\workflows\\security.yml",
+              "RelativeDocumentMoniker": "workflows\\security.yml",
+              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\workflows\\security.yml",
+              "RelativeToolTip": "workflows\\security.yml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2026-06-11T11:41:45.826Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "package.json",
+              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\package.json",
+              "RelativeDocumentMoniker": "package.json",
+              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\package.json",
+              "RelativeToolTip": "package.json",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAC0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-06-11T11:39:05.021Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "vite.config.ts",
+              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\vite.config.ts",
+              "RelativeDocumentMoniker": "vite.config.ts",
+              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\vite.config.ts",
+              "RelativeToolTip": "vite.config.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-06-11T11:35:42.117Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "product.validator.ts",
+              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\validators\\product.validator.ts",
+              "RelativeDocumentMoniker": "src\\validators\\product.validator.ts",
+              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\validators\\product.validator.ts",
+              "RelativeToolTip": "src\\validators\\product.validator.ts",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAiwFUAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-06-11T11:10:00.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "App.tsx",
+              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\App.tsx",
+              "RelativeDocumentMoniker": "src\\App.tsx",
+              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\App.tsx",
+              "RelativeToolTip": "src\\App.tsx",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAiwH8AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-06-11T10:45:46.273Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "index.html",
               "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\index.html",
               "RelativeDocumentMoniker": "index.html",
@@ -534,7 +300,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 17,
               "Title": "error.middleware.ts",
               "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\middleware\\error.middleware.ts",
               "RelativeDocumentMoniker": "src\\middleware\\error.middleware.ts",
@@ -547,7 +313,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 4,
               "Title": "auth.middleware.ts",
               "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\middleware\\auth.middleware.ts",
               "RelativeDocumentMoniker": "src\\middleware\\auth.middleware.ts",
@@ -560,7 +326,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 18,
               "Title": "upload.middleware.ts",
               "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\middleware\\upload.middleware.ts",
               "RelativeDocumentMoniker": "src\\middleware\\upload.middleware.ts",
@@ -573,7 +339,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 19,
               "Title": "user.model.ts",
               "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\models\\user.model.ts",
               "RelativeDocumentMoniker": "src\\models\\user.model.ts",
@@ -586,7 +352,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 7,
+              "Title": ".env",
+              "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\.env",
+              "RelativeDocumentMoniker": "backend\\.env",
+              "ToolTip": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\backend\\.env",
+              "RelativeToolTip": "backend\\.env",
+              "ViewState": "AgIAAHcAAAAAAAAAAAAAwJ8AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-06-11T10:33:04.183Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
               "Title": "rateLimiter.middleware.ts",
               "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\middleware\\rateLimiter.middleware.ts",
               "RelativeDocumentMoniker": "src\\middleware\\rateLimiter.middleware.ts",
@@ -599,7 +378,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 21,
               "Title": "security.middleware.ts",
               "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\middleware\\security.middleware.ts",
               "RelativeDocumentMoniker": "src\\middleware\\security.middleware.ts",
@@ -612,7 +391,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 23,
               "Title": "wallet.service.ts",
               "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\services\\wallet.service.ts",
               "RelativeDocumentMoniker": "src\\services\\wallet.service.ts",
@@ -625,7 +404,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 16,
               "Title": "mockData.ts",
               "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\data\\mockData.ts",
               "RelativeDocumentMoniker": "src\\data\\mockData.ts",
@@ -638,7 +417,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 24,
               "Title": "AdminLayout.tsx",
               "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\layouts\\AdminLayout.tsx",
               "RelativeDocumentMoniker": "src\\layouts\\AdminLayout.tsx",
@@ -651,7 +430,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 25,
               "Title": "secrets.ts",
               "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\config\\secrets.ts",
               "RelativeDocumentMoniker": "src\\config\\secrets.ts",
@@ -664,7 +443,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 22,
               "Title": "authStore.ts",
               "DocumentMoniker": "C:\\Users\\s.slovohotov\\Downloads\\Full Project\\Backend\u002BFrontend(MarketPlace)\\src\\store\\authStore.ts",
               "RelativeDocumentMoniker": "src\\store\\authStore.ts",
