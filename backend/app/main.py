@@ -13,6 +13,9 @@ from app.core.config import settings
 from app.core.db import AsyncSessionLocal
 from app.core.rate_limiter import limiter
 from app.models.entities import Settings
+import secure
+from fastapi import Request
+from fastapi.responses import Response
 
 logger = logging.getLogger(__name__)
 
@@ -97,3 +100,37 @@ app.include_router(api_router)
 @app.get("/health")
 async def healthcheck() -> dict:
     return {"status": "ok", "env": settings.app_env}
+
+security_headers = secure.Secure(
+    server=secure.Server().set(""),           # Скрыть Server header
+    hsts=secure.StrictTransportSecurity()
+        .max_age(31536000)
+        .include_subdomains()
+        .preload(),
+    xfo=secure.XFrameOptions().deny(),
+    content=secure.XContentTypeOptions(),
+    referrer=secure.ReferrerPolicy().strict_origin_when_cross_origin(),
+    permissions=secure.PermissionsPolicy(
+        geolocation="()",
+        microphone="()",
+        camera="()",
+    ),
+    csp=secure.ContentSecurityPolicy()
+        .default_src("'self'")
+        .script_src("'self'")
+        .style_src("'self'")
+        .img_src("'self'", "data:")
+        .connect_src("'self'"),
+)
+
+# ─── Middleware ──────────────────────────────────────────
+@app.middleware("http")
+async def add_security_headers(request: Request, call_next) -> Response:
+    response = await call_next(request)
+    # ✅ Применяем security headers ко всем ответам
+    await security_headers.set_headers_async(response)
+    # ✅ Добавляем Request ID для трассировки
+    response.headers["X-Request-ID"] = request.headers.get(
+        "X-Request-ID", str(uuid.uuid4())[:8]
+    )
+    return response

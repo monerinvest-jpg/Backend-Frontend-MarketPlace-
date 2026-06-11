@@ -5,14 +5,12 @@
 
 from slowapi import Limiter
 from slowapi.util import get_remote_address
+from app.core.config import settings
 
-# ✅ Используем IP адрес как ключ для rate limiting
-# В production за nginx: X-Forwarded-For или X-Real-IP
 limiter = Limiter(
     key_func=get_remote_address,
-    # ✅ Хранить счётчики в Redis (shared state между workers)
-    storage_uri="memory://",  # В prod: settings.redis_url
-    # Заголовки с информацией о лимите в ответе
+    # ✅ ИСПРАВЛЕНО: Redis — shared state между всеми воркерами
+    storage_uri=settings.redis_url,   # ⛔ БЫЛО: "memory://"
     headers_enabled=True,
 )
 

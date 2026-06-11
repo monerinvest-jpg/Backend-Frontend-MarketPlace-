@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException
+﻿from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -6,6 +6,7 @@ from app.api.deps import require_admin
 from app.core.db import get_session
 from app.models.entities import Order, Product, Settings, Shop, User
 from app.schemas.common import SettingIn
+from app.models.entities import ProductStatus  # Enum из models
 
 
 router = APIRouter(prefix="/admin", tags=["admin"], dependencies=[Depends(require_admin)])
@@ -20,15 +21,24 @@ async def dashboard(session: AsyncSession = Depends(get_session)) -> dict:
 
 
 @router.patch("/products/{product_id}/status")
-async def moderate_product(product_id: int, status: str, reason: str = "", session: AsyncSession = Depends(get_session)) -> dict:
-    result = await session.execute(select(Product).where(Product.id == product_id))
+async def moderate_product(
+    product_id: int,
+    status: ProductStatus,
+    reason: str = Query("", max_length=500, description="Причина отказа"),
+):
+    session: AsyncSession = Depends(get_session),
+) -> dict:
+    result = await session.execute(
+        select(Product).where(Product.id == product_id)
+    )
     product = result.scalar_one_or_none()
     if not product:
         raise HTTPException(status_code=404, detail="Product not found")
+    
     product.status = status
     product.moderation_reason = reason or None
     await session.commit()
-    return {"ok": True}
+    return {"ok": True, "new_status": status}
 
 
 @router.patch("/shops/{shop_id}/commission")

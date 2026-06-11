@@ -2,13 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\backend",
-    "\\backend\\alembic\\versions",
     "\\backend\\app",
-    "\\backend\\app\\core",
-    "\\backend\\app\\utils",
-    "\\src\\api",
-    "\\src\\validators"
+    "\\backend\\app\\api",
+    "\\backend\\app\\api\\routers",
+    "\\backend\\app\\services",
+    "\\backend\\app\\services\\payments",
+    "\\backend\\app\\utils"
   ],
-  "SelectedNode": "\\backend\\.env",
+  "SelectedNode": "\\backend\\app\\api\\routers\\admin.py",
   "PreviewInSolutionExplorer": false
 }

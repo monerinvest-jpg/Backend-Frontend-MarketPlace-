@@ -1,4 +1,6 @@
-﻿from fastapi import APIRouter, Depends, HTTPException, Request
+﻿import secrets
+import string
+from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -15,12 +17,49 @@ from app.models.entities import User
 from app.schemas.auth import LoginIn, RegisterIn, TokenPair, UserOut
 from app.utils.token_blacklist import TokenBlacklist
 from app.api.deps import get_current_user
+from fastapi.security import OAuth2PasswordBearer
+from app.core.security import decode_token
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
 
 @router.post("/register", response_model=TokenPair)
-@limiter.limit("5/minute")                                # ✅ Rate limit
+@limiter.limit("5/minute") # ✅ Rate limit
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/login")
+
+@router.post("/logout")
+async def logout(
+    user: User = Depends(get_current_user),
+    # ✅ Правильно получаем токен из Authorization header
+    raw_token: str = Depends(oauth2_scheme),
+) -> dict:
+    blacklist = TokenBlacklist()
+    
+    # ✅ Извлекаем JTI из токена для внесения в blacklist
+    try:
+        payload = decode_token(raw_token, token_type="access")
+        jti = payload.get("jti", "")
+        exp = payload.get("exp", 0)
+        # TTL = оставшееся время жизни токена
+        import time
+        remaining_ttl = max(0, int(exp - time.time()))
+        
+        if jti:
+            await blacklist.revoke_access_token(jti, ttl_seconds=remaining_ttl)
+    except Exception:
+        pass  # Токен уже истёк — ок
+    
+    # ✅ Удаляем refresh token
+    await blacklist.revoke_refresh_token(str(user.id))
+    
+    return {"message": "Logged out successfully"}
+
+def generate_referral_code() -> str:
+    """✅ Криптографически стойкий, непредсказуемый referral code"""
+    alphabet = string.ascii_uppercase + string.digits
+    # secrets.choice — криптографически случайный выбор
+    return ''.join(secrets.choice(alphabet) for _ in range(10))
+
 async def register(
     request: Request,
     payload: RegisterIn,
@@ -33,14 +72,12 @@ async def register(
         raise HTTPException(status_code=400, detail="Email already registered")
 
     user = User(
-        email=payload.email,
-        password_hash=hash_password(payload.password),
-        full_name=payload.full_name,
-        # ✅ ИСПРАВЛЕНО: роль всегда "buyer", НЕ из запроса!
-        # ⛔ БЫЛО: role=payload.role (пользователь мог стать superadmin!)
-        role="buyer",
-        referral_code=f"U{payload.email.split('@')[0][:6].upper()}",
-    )
+    email=payload.email,
+    password_hash=hash_password(payload.password),
+    full_name=payload.full_name,
+    role="buyer",                           # ✅ Хардкод, не из запроса
+    referral_code=generate_referral_code(), # ✅ Случайный, не предсказуемый
+)
     session.add(user)
     await session.commit()
     await session.refresh(user)

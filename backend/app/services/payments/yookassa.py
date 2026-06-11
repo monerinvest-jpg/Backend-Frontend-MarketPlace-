@@ -1,45 +1,46 @@
-from decimal import Decimal
-from uuid import uuid4
+﻿# backend/app/api/routers/payments.py — НОВЫЙ ФАЙЛ
 
-import httpx
-
+import hashlib
+import hmac
+import json
+from fastapi import APIRouter, HTTPException, Request, status
 from app.core.config import settings
-from app.services.payments.base import PaymentGateway
+
+router = APIRouter(prefix="/payments", tags=["payments"])
 
 
-class YooKassaGateway(PaymentGateway):
-    base_url = "https://api.yookassa.ru/v3/payments"
+def verify_yookassa_signature(body: bytes, signature: str) -> bool:
+    """✅ Верификация HMAC-SHA256 подписи от YooKassa"""
+    expected = hmac.new(
+        settings.yookassa_webhook_secret.encode(),
+        body,
+        hashlib.sha256,
+    ).hexdigest()
+    # ✅ compare_digest — защита от timing attack
+    return hmac.compare_digest(expected, signature)
 
-    async def create_payment(self, order_id: int, amount: Decimal, return_url: str) -> dict:
-        payload = {
-            "amount": {"value": f"{amount:.2f}", "currency": "RUB"},
-            "capture": True,
-            "confirmation": {"type": "redirect", "return_url": return_url},
-            "description": f"Order #{order_id}",
-            "metadata": {"order_id": str(order_id)},
-        }
-        headers = {"Idempotence-Key": str(uuid4())}
-        async with httpx.AsyncClient(timeout=10) as client:
-            response = await client.post(
-                self.base_url,
-                json=payload,
-                headers=headers,
-                auth=(settings.yookassa_shop_id, settings.yookassa_secret_key),
-            )
-        response.raise_for_status()
-        return response.json()
 
-    async def refund_payment(self, payment_id: str, amount: Decimal) -> dict:
-        payload = {
-            "payment_id": payment_id,
-            "amount": {"value": f"{amount:.2f}", "currency": "RUB"},
-        }
-        async with httpx.AsyncClient(timeout=10) as client:
-            response = await client.post(
-                "https://api.yookassa.ru/v3/refunds",
-                json=payload,
-                headers={"Idempotence-Key": str(uuid4())},
-                auth=(settings.yookassa_shop_id, settings.yookassa_secret_key),
-            )
-        response.raise_for_status()
-        return response.json()
+@router.post("/webhook/yookassa")
+async def yookassa_webhook(request: Request) -> dict:
+    body = await request.body()
+    
+    # ✅ Проверяем подпись
+    signature = request.headers.get("X-Request-Id", "")  # YooKassa подпись
+    
+    if not verify_yookassa_signature(body, signature):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid webhook signature"
+        )
+    
+    event = json.loads(body)
+    payment_id = event.get("object", {}).get("id")
+    event_type = event.get("event")
+    
+    if event_type == "payment.succeeded":
+        # ✅ Обновить статус заказа в БД
+        metadata = event.get("object", {}).get("metadata", {})
+        order_id = int(metadata.get("order_id", 0))
+        # await order_service.mark_paid(order_id, payment_id)
+    
+    return {"ok": True}
