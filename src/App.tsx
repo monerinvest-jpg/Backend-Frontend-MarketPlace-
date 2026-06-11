@@ -1,56 +1,128 @@
-import { ConfigProvider } from "antd";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { AdminLayout } from "@/layouts/AdminLayout";
-import { MainLayout } from "@/layouts/MainLayout";
-import {
-  AdminDashboardPage,
-  AdminOrdersPage,
-  AdminProductsPage,
-  AdminSettingsPage,
-  AdminShopsPage,
-  AdminUsersPage,
-} from "@/pages/AdminPages";
-import {
-  AccountPage,
-  CartPage,
-  CatalogPage,
-  CheckoutPage,
-  HomePage,
-  LoginPage,
-  ProductPage,
-  ReferralPage,
-  RegisterPage,
-  SellerPage,
-} from "@/pages/PublicPages";
+﻿// ✅ backend/src/app.ts
+// Полная настройка Express с безопасностью
 
-export default function App() {
-  return (
-    <ConfigProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<MainLayout />}>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/catalog" element={<CatalogPage />} />
-            <Route path="/product/:id" element={<ProductPage />} />
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="/checkout" element={<CheckoutPage />} />
-            <Route path="/account" element={<AccountPage />} />
-            <Route path="/seller" element={<SellerPage />} />
-            <Route path="/referrals" element={<ReferralPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/admin" element={<AdminLayout />}>
-              <Route index element={<AdminDashboardPage />} />
-              <Route path="users" element={<AdminUsersPage />} />
-              <Route path="shops" element={<AdminShopsPage />} />
-              <Route path="products" element={<AdminProductsPage />} />
-              <Route path="orders" element={<AdminOrdersPage />} />
-              <Route path="settings" element={<AdminSettingsPage />} />
-            </Route>
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </ConfigProvider>
-  );
-}
+import 'dotenv/config';
+import { validateEnv } from './config/validateEnv';
+const env = validateEnv(); // ← Сначала валидируем конфигурацию!
+
+import express from 'express';
+import helmet from 'helmet';
+import cors from 'cors';
+import rateLimit from 'express-rate-limit';
+import cookieParser from 'cookie-parser';
+import { authRouter } from './routes/auth.routes';
+import { productRouter } from './routes/product.routes';
+import { orderRouter } from './routes/order.routes';
+import { adminRouter } from './routes/admin.routes';
+import { errorHandler, notFoundHandler } from './middleware/error.middleware';
+import { logger } from './utils/logger';
+
+const app = express();
+
+// ────────────────────────────────────────────────────────
+// 1. TRUST PROXY (если за nginx/load balancer)
+// ────────────────────────────────────────────────────────
+app.set('trust proxy', 1);
+
+// ────────────────────────────────────────────────────────
+// 2. SECURITY HEADERS (Helmet)
+// ────────────────────────────────────────────────────────
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            scriptSrc: ["'self'"],
+            styleSrc: ["'self'"],
+            imgSrc: ["'self'", "data:", "https://images.unsplash.com"],
+            connectSrc: ["'self'"],
+            frameSrc: ["'none'"],
+            objectSrc: ["'none'"],
+        },
+    },
+    hsts: {
+        maxAge: 31536000,
+        includeSubDomains: true,
+        preload: true,
+    },
+}));
+
+// ────────────────────────────────────────────────────────
+// 3. CORS
+// ────────────────────────────────────────────────────────
+const allowedOrigins = env.ALLOWED_ORIGINS.split(',').map(o => o.trim());
+app.use(cors({
+    origin: (origin, cb) => {
+        if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
+        logger.warn({ origin }, 'CORS blocked');
+        cb(new Error('Not allowed by CORS'));
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    maxAge: 86400,
+}));
+
+// ────────────────────────────────────────────────────────
+// 4. RATE LIMITING
+// ────────────────────────────────────────────────────────
+app.use('/api', rateLimit({
+    windowMs: env.RATE_LIMIT_WINDOW_MS,
+    max: env.RATE_LIMIT_MAX_REQUESTS,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { error: 'Слишком много запросов' },
+}));
+
+// Строгий лимит для auth
+app.use('/api/v1/auth/login', rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 5,
+    skipSuccessfulRequests: true,
+}));
+
+// ────────────────────────────────────────────────────────
+// 5. BODY PARSING (с ограничением размера)
+// ────────────────────────────────────────────────────────
+app.use(express.json({ limit: env.JSON_BODY_LIMIT }));
+app.use(express.urlencoded({ extended: true, limit: env.JSON_BODY_LIMIT }));
+app.use(cookieParser());
+
+// ────────────────────────────────────────────────────────
+// 6. REQUEST LOGGING
+// ────────────────────────────────────────────────────────
+app.use((req, res, next) => {
+    const start = Date.now();
+    res.on('finish', () => {
+        logger.info({
+            method: req.method,
+            url: req.url,
+            status: res.statusCode,
+            duration: Date.now() - start,
+            ip: req.ip,
+        });
+    });
+    next();
+});
+
+// ────────────────────────────────────────────────────────
+// 7. HEALTH CHECK
+// ────────────────────────────────────────────────────────
+app.get('/api/v1/health', (req, res) => {
+    res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
+// ────────────────────────────────────────────────────────
+// 8. ROUTES
+// ────────────────────────────────────────────────────────
+app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/products', productRouter);
+app.use('/api/v1/orders', orderRouter);
+app.use('/api/v1/admin', adminRouter);
+
+// ────────────────────────────────────────────────────────
+// 9. ERROR HANDLING
+// ────────────────────────────────────────────────────────
+app.use(notFoundHandler);
+app.use(errorHandler);
+
+export default app;

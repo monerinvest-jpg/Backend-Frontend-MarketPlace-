@@ -101,8 +101,4 @@ export const defaultSettings: SettingsMap = {
   referral_seller_bonus_amount: 1500,
   referral_bonus_max_discount_percent: 30,
   enable_premoderation: true,
-  yookassa_shop_id: "demo-shop-id",
-  yookassa_secret_key: "demo-secret",
-  cdek_client_id: "demo-client-id",
-  cdek_client_secret: "demo-client-secret",
 };

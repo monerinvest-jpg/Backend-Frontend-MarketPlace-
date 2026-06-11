@@ -1,0 +1,9 @@
+name: Security Audit
+on: [push, pull_request, schedule: [{cron: '0 9 * * 1'}]]
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci
+      - run: npm audit --audit-level=high
