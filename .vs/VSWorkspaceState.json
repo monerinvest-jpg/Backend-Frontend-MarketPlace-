@@ -1,13 +1,15 @@
 {
   "ExpandedNodes": [
     "",
-    "\\backend\\alembic\\versions",
+    "\\backend",
+    "\\backend\\app",
     "\\backend\\app\\api",
     "\\backend\\app\\api\\routers",
+    "\\backend\\app\\core",
     "\\backend\\app\\services",
     "\\backend\\app\\services\\payments",
     "\\backend\\app\\utils"
   ],
-  "SelectedNode": "\\workflows",
+  "SelectedNode": "\\backend\\app\\core\\security.py",
   "PreviewInSolutionExplorer": false
 }
