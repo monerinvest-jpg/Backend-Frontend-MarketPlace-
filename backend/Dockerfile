@@ -1,59 +1,46 @@
-﻿# backend/Dockerfile — Multi-stage безопасная сборка
-# ✅ Non-root пользователь, минимальный образ
+﻿# backend/Dockerfile — ПОЛНАЯ ЗАМЕНА (Python/FastAPI)
 
-FROM node:20-alpine AS base
-# ✅ Устанавливаем только системные зависимости
-RUN apk add --no-cache libc6-compat curl
+FROM python:3.12-slim AS base
+
+# ✅ Системные зависимости
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl gcc libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
-# ─────────────────────────────────────────────────
+# ─── Зависимости (кешируемый слой) ───────────────────────
 FROM base AS deps
-COPY package*.json ./
-# ✅ npm ci — детерминированная установка по lockfile
-RUN npm ci --only=production && npm cache clean --force
+COPY requirements.txt .
+RUN pip install --no-cache-dir --upgrade pip \
+    && pip install --no-cache-dir -r requirements.txt
 
-# ─────────────────────────────────────────────────
-FROM base AS dev-deps
-COPY package*.json ./
-RUN npm ci && npm cache clean --force
+# ─── Production image ────────────────────────────────────
+FROM deps AS production
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    APP_ENV=production
 
-# ─────────────────────────────────────────────────
-FROM dev-deps AS development
-COPY . .
-# ✅ Создаём non-root пользователя
-RUN addgroup --system --gid 1001 nodejs && \
-    adduser --system --uid 1001 nodeuser && \
-    chown -R nodeuser:nodejs /app
-USER nodeuser
-EXPOSE 4000
-CMD ["npm", "run", "dev"]
+# ✅ Non-root пользователь
+RUN groupadd --gid 1001 appgroup \
+    && useradd --uid 1001 --gid appgroup --no-create-home appuser
 
-# ─────────────────────────────────────────────────
-FROM base AS builder
-COPY --from=dev-deps /app/node_modules ./node_modules
-COPY . .
-RUN npm run build
+COPY --chown=appuser:appgroup . .
 
-# ─────────────────────────────────────────────────
-FROM base AS production
-ENV NODE_ENV=production
+USER appuser
 
-# ✅ Non-root user
-RUN addgroup --system --gid 1001 nodejs && \
-    adduser --system --uid 1001 nodeuser
+# ✅ Порт FastAPI (не 4000!)
+EXPOSE 8000
 
-# Копируем только production dependencies
-COPY --from=deps /app/node_modules ./node_modules
-COPY --from=builder --chown=nodeuser:nodejs /app/dist ./dist
-COPY --from=builder --chown=nodeuser:nodejs /app/package.json .
-
-USER nodeuser
-
-# ✅ Никаких секретов в образе! Всё через ENV при запуске.
-# ✅ EXPOSE только один порт API
-EXPOSE 4000
-
+# ✅ Health check
 HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
-  CMD curl -f http://localhost:4000/api/v1/health || exit 1
+    CMD curl -f http://localhost:8000/health || exit 1
 
-CMD ["node", "dist/app.js"]
+# ✅ Gunicorn + Uvicorn workers для production
+CMD ["gunicorn", "app.main:app", \
+     "--worker-class", "uvicorn.workers.UvicornWorker", \
+     "--workers", "4", \
+     "--bind", "0.0.0.0:8000", \
+     "--timeout", "60", \
+     "--access-logfile", "-", \
+     "--error-logfile", "-"]

@@ -1,6 +1,35 @@
 ﻿import redis.asyncio as aioredis
 from app.core.config import settings
 
+_redis_client: aioredis.Redis | None = None
+ 
+async def get_redis() -> aioredis.Redis:
+    """Singleton Redis-клиент (connection pool)"""
+    global _redis_client
+    if _redis_client is None:
+        _redis_client = aioredis.from_url(
+            settings.redis_url,
+            decode_responses=True,
+            max_connections=20,  # ✅ Пул соединений
+        )
+    return _redis_client
+ 
+async def close_redis() -> None:
+    global _redis_client
+    if _redis_client:
+        await _redis_client.aclose()
+        _redis_client = None
+ 
+ 
+# backend/app/main.py — lifespan
+ 
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await _seed_settings()
+    logger.info("Application started")
+    yield
+    await close_redis()  # ✅ Закрываем пул при shutdown
+    logger.info("Application shutdown")
 
 class TokenBlacklist:
     """Redis-based управление JWT токенами"""

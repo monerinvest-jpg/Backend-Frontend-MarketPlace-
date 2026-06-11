@@ -1,7 +1,7 @@
-﻿from fastapi import APIRouter, Depends, HTTPException
+﻿from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
-
+from sqlalchemy import func, select
 from app.api.deps import require_admin
 from app.core.db import get_session
 from app.models.entities import Order, Product, Settings, Shop, User
@@ -14,10 +14,25 @@ router = APIRouter(prefix="/admin", tags=["admin"], dependencies=[Depends(requir
 
 @router.get("/dashboard")
 async def dashboard(session: AsyncSession = Depends(get_session)) -> dict:
-    users_count = len((await session.execute(select(User))).scalars().all())
-    orders = (await session.execute(select(Order))).scalars().all()
-    revenue = sum(float(order.total_price) for order in orders)
-    return {"users": users_count, "orders": len(orders), "revenue": revenue}
+    # ✅ Агрегаты на уровне БД — не загружаем все записи в память
+    users_count = await session.scalar(select(func.count(User.id)))
+    orders_count = await session.scalar(select(func.count(Order.id)))
+    revenue = await session.scalar(
+        select(func.coalesce(func.sum(Order.total_price), 0))
+    )
+    
+    # ✅ Последние 10 заказов, не все
+    recent_orders = await session.execute(
+        select(Order)
+        .order_by(Order.created_at.desc())
+        .limit(10)
+    )
+    
+    return {
+        "users": users_count or 0,
+        "orders": orders_count or 0,
+        "revenue": float(revenue or 0),
+    }
 
 
 @router.patch("/products/{product_id}/status")
@@ -25,8 +40,7 @@ async def moderate_product(
     product_id: int,
     status: ProductStatus,
     reason: str = Query("", max_length=500, description="Причина отказа"),
-):
-    session: AsyncSession = Depends(get_session),
+    session: AsyncSession = Depends(get_session),  # ✅ Перенести внутрь скобок
 ) -> dict:
     result = await session.execute(
         select(Product).where(Product.id == product_id)
@@ -34,7 +48,7 @@ async def moderate_product(
     product = result.scalar_one_or_none()
     if not product:
         raise HTTPException(status_code=404, detail="Product not found")
-    
+ 
     product.status = status
     product.moderation_reason = reason or None
     await session.commit()

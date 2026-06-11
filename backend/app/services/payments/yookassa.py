@@ -1,46 +1,38 @@
-﻿# backend/app/api/routers/payments.py — НОВЫЙ ФАЙЛ
+﻿# backend/app/api/routers/payments.py — новый файл
 
 import hashlib
 import hmac
-import json
-from fastapi import APIRouter, HTTPException, Request, status
+from fastapi import APIRouter, Depends, HTTPException, Request
 from app.core.config import settings
 
 router = APIRouter(prefix="/payments", tags=["payments"])
 
-
-def verify_yookassa_signature(body: bytes, signature: str) -> bool:
-    """✅ Верификация HMAC-SHA256 подписи от YooKassa"""
+@router.post("/yookassa/webhook")
+async def yookassa_webhook(request: Request) -> dict:
+    """✅ Обработка webhook с проверкой подписи"""
+    
+    body = await request.body()
+    
+    # ✅ Проверка HMAC-SHA256 подписи
+    signature = request.headers.get("X-Yookassa-Signature", "")
+    if not signature:
+        raise HTTPException(status_code=400, detail="Missing signature")
+    
     expected = hmac.new(
         settings.yookassa_webhook_secret.encode(),
         body,
-        hashlib.sha256,
+        hashlib.sha256
     ).hexdigest()
-    # ✅ compare_digest — защита от timing attack
-    return hmac.compare_digest(expected, signature)
-
-
-@router.post("/webhook/yookassa")
-async def yookassa_webhook(request: Request) -> dict:
-    body = await request.body()
     
-    # ✅ Проверяем подпись
-    signature = request.headers.get("X-Request-Id", "")  # YooKassa подпись
+    # ✅ Сравнение через hmac.compare_digest (защита от timing attack)
+    if not hmac.compare_digest(expected, signature):
+        raise HTTPException(status_code=400, detail="Invalid signature")
     
-    if not verify_yookassa_signature(body, signature):
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid webhook signature"
-        )
-    
-    event = json.loads(body)
-    payment_id = event.get("object", {}).get("id")
+    event = await request.json()
     event_type = event.get("event")
     
     if event_type == "payment.succeeded":
-        # ✅ Обновить статус заказа в БД
-        metadata = event.get("object", {}).get("metadata", {})
-        order_id = int(metadata.get("order_id", 0))
-        # await order_service.mark_paid(order_id, payment_id)
+        payment_id = event["object"]["id"]
+        # TODO: обновить статус заказа
     
-    return {"ok": True}
+    return {"status": "ok"}

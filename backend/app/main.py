@@ -1,4 +1,5 @@
-﻿import logging
+﻿import uuid
+import logging
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request, status
@@ -99,7 +100,9 @@ app.include_router(api_router)
 
 @app.get("/health")
 async def healthcheck() -> dict:
-    return {"status": "ok", "env": settings.app_env}
+    if settings.app_env == "production":
+        return {"status": "ok"}  # ✅ Минимум информации
+    return {"status": "ok", "env": settings.app_env}  # Dev: можно
 
 security_headers = secure.Secure(
     server=secure.Server().set(""),           # Скрыть Server header

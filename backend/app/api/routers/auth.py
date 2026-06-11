@@ -1,4 +1,5 @@
-﻿import secrets
+﻿from app.models.entities import RoleEnum
+import secrets
 import string
 from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy import select
@@ -60,30 +61,27 @@ def generate_referral_code() -> str:
     # secrets.choice — криптографически случайный выбор
     return ''.join(secrets.choice(alphabet) for _ in range(10))
 
-async def register(
-    request: Request,
-    payload: RegisterIn,
-    session: AsyncSession = Depends(get_session),
-) -> TokenPair:
-    exists = await session.execute(
-        select(User).where(User.email == payload.email)
-    )
-    if exists.scalar_one_or_none():
-        raise HTTPException(status_code=400, detail="Email already registered")
-
+async def register(...) -> TokenPair:
+    # ... проверка email ...
+    
+    # ✅ Генерация уникального referral_code с защитой от коллизий
+    for attempt in range(10):
+        code = generate_referral_code()
+        exists = await session.execute(
+            select(User).where(User.referral_code == code)
+        )
+        if not exists.scalar_one_or_none():
+            break
+    else:
+        raise HTTPException(500, "Could not generate unique referral code")
+    
     user = User(
-    email=payload.email,
-    password_hash=hash_password(payload.password),
-    full_name=payload.full_name,
-    role="buyer",                           # ✅ Хардкод, не из запроса
-    referral_code=generate_referral_code(), # ✅ Случайный, не предсказуемый
-)
-    session.add(user)
-    await session.commit()
-    await session.refresh(user)
-
-    access_token = create_access_token(str(user.id))
-    refresh_token = create_refresh_token(str(user.id))
+        email=payload.email,
+        password_hash=hash_password(payload.password),
+        full_name=payload.full_name,
+        role=RoleEnum.BUYER,          # ✅ Enum, не строка "buyer"
+        referral_code=code,
+    )
 
     # ✅ Сохранить refresh token в Redis с TTL
     blacklist = TokenBlacklist()
@@ -161,20 +159,6 @@ async def refresh(
     await blacklist.store_refresh_token(user_id, new_refresh)
 
     return TokenPair(access_token=new_access, refresh_token=new_refresh)
-
-
-@router.post("/logout")
-async def logout(
-    user: User = Depends(get_current_user),
-    token: str = Depends(lambda: ""),  # Из Authorization header
-) -> dict:
-    """✅ Инвалидация токенов при выходе"""
-    blacklist = TokenBlacklist()
-    # ✅ Добавить access token в blacklist до истечения срока
-    await blacklist.revoke_access_token(token)
-    # ✅ Удалить refresh token из Redis
-    await blacklist.revoke_refresh_token(str(user.id))
-    return {"message": "Logged out successfully"}
 
 
 @router.get("/me", response_model=UserOut)
