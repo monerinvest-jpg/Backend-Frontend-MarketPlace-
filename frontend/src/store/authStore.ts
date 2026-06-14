@@ -1,51 +1,84 @@
-import { create } from "zustand";
+п»їimport { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { users } from "@/data/mockData";
 import type { User, UserRole } from "@/types";
 import { z } from 'zod';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import type { User } from "@/types";
 
 export const loginSchema = z.object({
-    email: z.string().email('Некорректный email').max(255),
-    password: z.string().min(8, 'Минимум 8 символов').max(128),
+    email: z.string().email('РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ email').max(255),
+    password: z.string().min(8, 'РњРёРЅРёРјСѓРј 8 СЃРёРјРІРѕР»РѕРІ').max(128),
 });
 
-// В store — только данные профиля (без роли в параметрах)
+// Р’ store вЂ” С‚РѕР»СЊРєРѕ РґР°РЅРЅС‹Рµ РїСЂРѕС„РёР»СЏ (Р±РµР· СЂРѕР»Рё РІ РїР°СЂР°РјРµС‚СЂР°С…)
 login: (credentials: z.infer<typeof loginSchema>) => Promise<void>;
 
-// access token — только в памяти (переменная модуля)
-let accessToken: string | null = null;
-
-export const tokenService = {
-    getAccessToken: () => accessToken,
-    setAccessToken: (token: string) => { accessToken = token; },
-    clearTokens: () => { accessToken = null; },
-};
-
-// refresh token — HttpOnly cookie (устанавливается сервером)
-// Set-Cookie: refreshToken=...; HttpOnly; Secure; SameSite=Strict; Path=/auth/refresh
-
-// Zustand без persist — только текущий пользователь в памяти
-// access token — только в памяти модуля (не в store, не в localStorage)
+// в”Ђв”Ђ Р•РґРёРЅСЃС‚РІРµРЅРЅР°СЏ СЂРµР°Р»РёР·Р°С†РёСЏ TokenService в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
+// Access token: РўРћР›Р¬РљРћ РІ РїР°РјСЏС‚Рё (in-memory), РќР• РІ localStorage
 let _accessToken: string | null = null;
 
 export const tokenService = {
-    get: () => _accessToken,
-    set: (t: string) => { _accessToken = t; },
-    clear: () => { _accessToken = null; },
+    get: (): string | null => _accessToken,
+    set: (token: string): void => {
+        // Р’Р°Р»РёРґР°С†РёСЏ С„РѕСЂРјР°С‚Р° JWT РїРµСЂРµРґ СЃРѕС…СЂР°РЅРµРЅРёРµРј
+        if (!token || token.split('.').length !== 3) {
+            console.error('[TokenService] Invalid JWT format');
+            return;
+        }
+        _accessToken = token;
+    },
+    clear: (): void => { _accessToken = null; },
+    isExpired: (): boolean => {
+        if (!_accessToken) return true;
+        try {
+            const payload = JSON.parse(atob(_accessToken.split('.')[1]));
+            return Date.now() >= payload.exp * 1000;
+        } catch { return true; }
+    },
 };
 
-// В store persist — только несекретные данные профиля
+// Refresh token СѓРїСЂР°РІР»СЏРµС‚СЃСЏ РўРћР›Р¬РљРћ С‡РµСЂРµР· HttpOnly cookie РЅР° Р±СЌРєРµРЅРґРµ
+// Set-Cookie: refreshToken=...; HttpOnly; Secure; SameSite=Strict; Path=/api/v1/auth/refresh
+
+interface AuthState {
+    currentUser: Pick<User, 'id' | 'email' | 'role'> | null;
+    isAuthenticated: boolean;
+    setUser: (user: Pick<User, 'id' | 'email' | 'role'>, token: string) => void;
+    clear: () => void;
+}
+
 export const useAuthStore = create<AuthState>()(
     persist(
-        (set) => ({
-            currentUser: null, // { id, email, role } — не секрет
+        (set, get) => ({
+            currentUser: null,
             isAuthenticated: false,
-            setUser: (user) => set({ currentUser: user, isAuthenticated: true }),
-            clear: () => { tokenService.clear(); set({ currentUser: null, isAuthenticated: false }); },
+            setUser: (user, token) => {
+                tokenService.set(token);
+                set({ currentUser: user, isAuthenticated: true });
+            },
+            clear: () => {
+                tokenService.clear();
+                set({ currentUser: null, isAuthenticated: false });
+            },
         }),
         {
-            name: 'auth-profile', // только профиль, без токенов!
-            partialize: (state) => ({ currentUser: state.currentUser }),
+            name: "auth-session",
+            // вњ… РҐСЂР°РЅРёРј РўРћР›Р¬РљРћ С‚Рѕ, С‡С‚Рѕ РЅСѓР¶РЅРѕ РґР»СЏ UX (РёРјСЏ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ)
+            // вњ… РќР• С…СЂР°РЅРёРј: role, balance, referralCode
+            partialize: (state) => ({
+                currentUser: state.currentUser
+                    ? { id: state.currentUser.id, email: state.currentUser.email }
+                    : null,
+            }),
+            // РџСЂРё Р·Р°РіСЂСѓР·РєРµ РёР· localStorage вЂ” РІСЃРµРіРґР° РІРµСЂРёС„РёС†РёСЂСѓРµРј С‡РµСЂРµР· API
+            onRehydrateStorage: () => (state) => {
+                if (state?.currentUser) {
+                    // РџРѕРјРµС‡Р°РµРј РєР°Рє "С‚СЂРµР±СѓРµС‚ РІРµСЂРёС„РёРєР°С†РёРё"
+                    state.isAuthenticated = false; // API РїРѕРґС‚РІРµСЂРґРёС‚
+                }
+            },
         }
     )
 );

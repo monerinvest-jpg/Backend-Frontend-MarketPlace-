@@ -2,8 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\backend",
-    "\\frontend"
+    "\\backend\\src",
+    "\\backend\\src\\config",
+    "\\backend\\src\\middleware",
+    "\\backend\\src\\services",
+    "\\frontend",
+    "\\frontend\\src",
+    "\\frontend\\src\\data",
+    "\\frontend\\src\\store"
   ],
-  "SelectedNode": "\\backend\\alembic.ini",
+  "SelectedNode": "\\backend\\src\\config\\validateEnv.ts",
   "PreviewInSolutionExplorer": false
 }

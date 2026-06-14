@@ -7,35 +7,30 @@ export const categories: Category[] = [
   { id: 4, name: "Искусство", slug: "art" },
 ];
 
-export const users: User[] = [
-  {
-    id: 1,
-    email: "root@market.dev",
-    fullName: "Super Admin",
-    role: "superadmin",
-    referralCode: "ROOT001",
-    balance: 0,
-    isActive: true,
-  },
-  {
-    id: 2,
-    email: "seller@market.dev",
-    fullName: "Craft Seller",
-    role: "seller",
-    referralCode: "SELL002",
-    balance: 17400,
-    isActive: true,
-  },
-  {
-    id: 3,
-    email: "buyer@market.dev",
-    fullName: "Buyer Demo",
-    role: "buyer",
-    referralCode: "BUY003",
-    balance: 840,
-    isActive: true,
-  },
-];
+const isDev = import.meta.env.DEV;
+
+export const users: User[] = isDev
+    ? [
+        {
+            id: 1,
+            email: "admin@example.local",   // ← фиктивный dev-email
+            fullName: "Dev Admin",
+            role: "superadmin",
+            referralCode: "DEV001",
+            balance: 0,
+            isActive: true,
+        },
+        {
+            id: 2,
+            email: "seller@example.local",
+            fullName: "Dev Seller",
+            role: "seller",
+            referralCode: "DEV002",
+            balance: 17400,
+            isActive: true,
+        },
+    ]
+    : []; // В production — пустой массив, данные берутся из API
 
 export const shops: Shop[] = [
   {

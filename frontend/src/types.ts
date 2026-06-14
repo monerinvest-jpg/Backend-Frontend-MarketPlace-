@@ -77,13 +77,6 @@ export interface PublicSettings {
     referral_seller_bonus_amount: number;
     referral_bonus_max_discount_percent: number;
     enable_premoderation: boolean;
-    // ✅ Никаких секретных ключей!
 }
-
-/** Только на бэкенде — НИКОГДА не передавать клиенту */
-export interface PrivateSettings extends PublicSettings {
-    yookassa_shop_id: string;
-    yookassa_secret_key: string;
-    cdek_client_id: string;
-    cdek_client_secret: string;
-}
+// PrivateSettings живёт ТОЛЬКО в backend/src/types/settings.types.ts
+// и никогда не экспортируется за пределы backend
