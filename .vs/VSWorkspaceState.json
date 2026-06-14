@@ -1,15 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\backend\\app\\api",
-    "\\backend\\app\\api\\routers",
-    "\\backend\\app\\core",
-    "\\backend\\app\\services",
-    "\\backend\\app\\services\\payments",
-    "\\backend\\app\\utils",
-    "\\src",
-    "\\src\\test\\fixtures"
+    "\\backend",
+    "\\frontend"
   ],
-  "SelectedNode": "\\src\\services",
+  "SelectedNode": "\\backend\\alembic.ini",
   "PreviewInSolutionExplorer": false
 }
