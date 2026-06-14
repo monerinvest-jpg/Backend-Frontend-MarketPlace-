@@ -1,15 +1,15 @@
 {
   "ExpandedNodes": [
     "",
-    "\\backend",
-    "\\backend\\app",
     "\\backend\\app\\api",
     "\\backend\\app\\api\\routers",
     "\\backend\\app\\core",
     "\\backend\\app\\services",
     "\\backend\\app\\services\\payments",
-    "\\backend\\app\\utils"
+    "\\backend\\app\\utils",
+    "\\src",
+    "\\src\\test\\fixtures"
   ],
-  "SelectedNode": "\\backend\\app\\core\\security.py",
+  "SelectedNode": "\\src\\services",
   "PreviewInSolutionExplorer": false
 }

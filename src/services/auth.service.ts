@@ -8,10 +8,16 @@ import { redis } from '../config/redis';
 import { db } from '../config/database';
 import { AppError } from '../middleware/error.middleware';
 import type { JwtPayload } from '../middleware/auth.middleware';
-
-const BCRYPT_ROUNDS = parseInt(process.env.BCRYPT_ROUNDS || '12');
-const ACCESS_SECRET = process.env.JWT_SECRET!;
-const REFRESH_SECRET = process.env.JWT_REFRESH_SECRET!;
+import { validateEnv } from '../config/validateEnv';
+const env = validateEnv();
+// ✅ В validateEnv.ts — добавить валидацию
+BCRYPT_ROUNDS: z.string()
+    .regex(/^\d+$/)
+    .transform(Number)
+    .refine(n => n >= 12, 'BCRYPT_ROUNDS должен быть >= 12!')
+    .default('12'),
+const ACCESS_SECRET: string = env.JWT_SECRET;
+const REFRESH_SECRET: string = env.JWT_REFRESH_SECRET;
 const ACCESS_EXPIRES = process.env.JWT_ACCESS_EXPIRES || '15m';
 const REFRESH_EXPIRES = process.env.JWT_REFRESH_EXPIRES || '7d';
 const REFRESH_TTL = parseInt(process.env.REDIS_REFRESH_TOKEN_TTL || '604800');

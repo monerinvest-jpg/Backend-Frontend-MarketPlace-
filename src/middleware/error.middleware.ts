@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+﻿import { Request, Response, NextFunction } from 'express';
 import { logger } from '../utils/logger';
 
 export class AppError extends Error {
@@ -21,11 +21,31 @@ export const errorHandler = (
         });
     }
 
-    // � production � ������� ������� �� ������!
-    const isProd = process.env.NODE_ENV === 'production';
-    return res.status(500).json({
-        status: 'error',
-        message: isProd ? '���������� ������ �������' : err.message,
-        ...(isProd ? {} : { stack: err.stack }),
-    });
-};
+    // В production — никаких деталей об ошибке!
+    // Всегда сохранять файлы в UTF-8 без BOM!
+
+    export const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
+        const isProduction = process.env.NODE_ENV === 'production';
+
+        // Логируем всегда (в structured logger, не console.error)
+        logger.error({
+            err: { message: err.message, stack: isProduction ? '[hidden]' : err.stack },
+            req: { method: req.method, url: req.url, userId: req.user?.sub },
+        });
+
+        if (err instanceof AppError && err.isOperational) {
+            return res.status(err.statusCode).json({
+                status: 'error',
+                message: err.message,
+                // ✅ В production никогда не включаем stack
+            });
+        }
+
+        return res.status(500).json({
+            status: 'error',
+            message: isProduction
+                ? 'Внутренняя ошибка сервера'
+                : err.message,
+            ...(isProduction ? {} : { stack: err.stack }),
+        });
+    };

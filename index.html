@@ -11,4 +11,19 @@
              object-src 'none';" />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="Content-Security-Policy"
+          content="
+    default-src 'self';
+    script-src 'self' 'nonce-{RANDOM_NONCE}';
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' data: https://images.unsplash.com;
+    connect-src 'self' https://api.yourdomain.com;
+    frame-src 'none';
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+  ">
+
+    <!-- Или в Nginx: -->
+    <!-- add_header Content-Security-Policy "default-src 'self'..."; -->
 </head>

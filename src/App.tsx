@@ -27,39 +27,45 @@ app.set('trust proxy', 1);
 // ────────────────────────────────────────────────────────
 // 2. SECURITY HEADERS (Helmet)
 // ────────────────────────────────────────────────────────
+// ✅ Параметризованный CSP
 app.use(helmet({
     contentSecurityPolicy: {
         directives: {
             defaultSrc: ["'self'"],
-            scriptSrc: ["'self'"],
-            styleSrc: ["'self'"],
-            imgSrc: ["'self'", "data:", "https://images.unsplash.com"],
-            connectSrc: ["'self'"],
-            frameSrc: ["'none'"],
-            objectSrc: ["'none'"],
+            connectSrc: ["'self'", env.FRONTEND_URL],
+            imgSrc: ["'self'", "data:", env.CDN_URL || "https://images.unsplash.com"],
+            // В dev — разрешаем localhost
+            ...(env.NODE_ENV === 'development' && {
+                connectSrc: ["'self'", "http://localhost:*", "ws://localhost:*"],
+            }),
         },
-    },
-    hsts: {
-        maxAge: 31536000,
-        includeSubDomains: true,
-        preload: true,
     },
 }));
 
 // ────────────────────────────────────────────────────────
 // 3. CORS
 // ────────────────────────────────────────────────────────
-const allowedOrigins = env.ALLOWED_ORIGINS.split(',').map(o => o.trim());
+const rawOrigins = env.ALLOWED_ORIGINS.split(',').map(o => o.trim());
+
+// В production запрещаем wildcard
+if (env.NODE_ENV === 'production' && rawOrigins.includes('*')) {
+    throw new Error('ALLOWED_ORIGINS не может быть "*" в production!');
+}
+
 app.use(cors({
     origin: (origin, cb) => {
-        if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
+        // Разрешаем запросы без origin (мобильные приложения, Postman)
+        // только в development
+        if (!origin) {
+            return env.NODE_ENV === 'development'
+                ? cb(null, true)
+                : cb(new Error('Origin required'));
+        }
+        if (rawOrigins.includes(origin)) return cb(null, true);
         logger.warn({ origin }, 'CORS blocked');
         cb(new Error('Not allowed by CORS'));
     },
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    maxAge: 86400,
 }));
 
 // ────────────────────────────────────────────────────────
@@ -79,6 +85,24 @@ app.use('/api/v1/auth/login', rateLimit({
     max: 5,
     skipSuccessfulRequests: true,
 }));
+
+const authLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 10,
+    skipSuccessfulRequests: false,
+    keyGenerator: (req) => req.ip + req.body?.email, // per IP+email
+});
+
+const strictAuthLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 5,
+    skipSuccessfulRequests: true,
+});
+
+app.use('/api/v1/auth/login', strictAuthLimiter);
+app.use('/api/v1/auth/register', authLimiter);
+app.use('/api/v1/auth/refresh', authLimiter);
+app.use('/api/v1/auth/forgot-password', rateLimit({ windowMs: 60 * 60 * 1000, max: 3 }));
 
 // ────────────────────────────────────────────────────────
 // 5. BODY PARSING (с ограничением размера)

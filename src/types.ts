@@ -1,4 +1,4 @@
-export type UserRole = "superadmin" | "moderator" | "seller" | "buyer";
+﻿export type UserRole = "superadmin" | "moderator" | "seller" | "buyer";
 
 export type ProductStatus = "pending" | "active" | "rejected" | "blocked";
 
@@ -69,15 +69,21 @@ export interface Order {
   createdAt: string;
 }
 
-export interface SettingsMap {
-  global_commission_percent: number;
-  referral_buyer_bonus_amount: number;
-  referral_buyer_min_order_amount: number;
-  referral_seller_bonus_amount: number;
-  referral_bonus_max_discount_percent: number;
-  enable_premoderation: boolean;
-  yookassa_shop_id: string;
-  yookassa_secret_key: string;
-  cdek_client_id: string;
-  cdek_client_secret: string;
+/** Настройки, безопасные для передачи на фронтенд */
+export interface PublicSettings {
+    global_commission_percent: number;
+    referral_buyer_bonus_amount: number;
+    referral_buyer_min_order_amount: number;
+    referral_seller_bonus_amount: number;
+    referral_bonus_max_discount_percent: number;
+    enable_premoderation: boolean;
+    // ✅ Никаких секретных ключей!
+}
+
+/** Только на бэкенде — НИКОГДА не передавать клиенту */
+export interface PrivateSettings extends PublicSettings {
+    yookassa_shop_id: string;
+    yookassa_secret_key: string;
+    cdek_client_id: string;
+    cdek_client_secret: string;
 }
