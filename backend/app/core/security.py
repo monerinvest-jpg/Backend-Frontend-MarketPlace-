@@ -21,27 +21,23 @@ def verify_password(plain: str, hashed: str) -> bool:
 def create_access_token(subject: str) -> str:
     now = datetime.now(timezone.utc)
     payload = {
-        "sub": subject,
-        "type": "access",              # ✅ Обязательно! Защита от token substitution
-        "jti": str(uuid.uuid4()),      # ✅ Уникальный ID для blacklist
-        "iat": int(now.timestamp()),
-        "exp": int((now + timedelta(
-            minutes=settings.access_token_expire_minutes  # 15 мин
-        )).timestamp()),
-    }
+    "sub": "123",           # user_id
+    "type": "access",       # ✅ Защита от token substitution attack
+    "jti": "uuid4-value",   # ✅ Уникальный ID для blacklist при logout
+    "iat": 1720000000,      # Время создания
+    "exp": 1720000900,      # Время истечения (15 мин)
+}
     return jwt.encode(payload, settings.secret_key, algorithm=ALGORITHM)
 
 def create_refresh_token(subject: str) -> str:
     now = datetime.now(timezone.utc)
     payload = {
-        "sub": subject,
-        "type": "refresh",             # ✅ Другой тип
-        "jti": str(uuid.uuid4()),
-        "iat": int(now.timestamp()),
-        "exp": int((now + timedelta(
-            minutes=settings.refresh_token_expire_minutes  # 7 дней
-        )).timestamp()),
-    }
+    "sub": "123",
+    "type": "refresh",      # ✅ Другой тип — нельзя использовать вместо access
+    "jti": "other-uuid4",
+    "iat": 1720000000,
+    "exp": 1720604800,      # 7 дней
+
     # ✅ ДРУГОЙ секрет для refresh! Нельзя использовать access access-токен как refresh!
     return jwt.encode(payload, settings.refresh_secret_key, algorithm=ALGORITHM)
 

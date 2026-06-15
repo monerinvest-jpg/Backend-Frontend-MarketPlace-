@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\backend",
+    "\\backend\\app",
+    "\\backend\\app\\api\\routers",
+    "\\backend\\app\\core",
     "\\backend\\src",
-    "\\backend\\src\\config",
-    "\\backend\\src\\middleware",
-    "\\backend\\src\\services",
+    "\\backend\\test",
     "\\frontend",
     "\\frontend\\src",
-    "\\frontend\\src\\data",
-    "\\frontend\\src\\store"
+    "\\frontend\\src\\api"
   ],
-  "SelectedNode": "\\backend\\src\\config\\validateEnv.ts",
+  "SelectedNode": "\\backend\\app\\services\\delivery\\cdek.py",
   "PreviewInSolutionExplorer": false
 }

@@ -1,14 +1,14 @@
-﻿from fastapi import Depends, HTTPException, status
+﻿# backend/app/api/deps.py — ИСПРАВЛЕНИЕ role check
+
+from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.core.config import settings
 from app.core.db import get_session
 from app.core.security import decode_token
-from app.models.entities import User
+from app.models.entities import RoleEnum, User   # ✅ Импортируем RoleEnum
 from app.utils.token_blacklist import TokenBlacklist
-
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/login")
 
@@ -18,8 +18,6 @@ async def get_current_user(
     session: AsyncSession = Depends(get_session),
 ) -> User:
     try:
-        # ✅ Проверяем type == "access" (защита от token substitution)
-        # ⛔ БЫЛО: jwt.decode(token, settings.secret_key, ...) без проверки type
         payload = decode_token(token, token_type="access")
         user_id = int(payload.get("sub", 0))
         jti = payload.get("jti", "")
@@ -30,41 +28,34 @@ async def get_current_user(
             headers={"WWW-Authenticate": "Bearer"},
         ) from exc
 
-    # ✅ Проверяем что токен не в blacklist (logout)
+    # ✅ Проверяем blacklist
     blacklist = TokenBlacklist()
     if await blacklist.is_access_token_revoked(jti):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Token has been revoked"
+            detail="Token has been revoked",
         )
 
     result = await session.execute(select(User).where(User.id == user_id))
     user = result.scalar_one_or_none()
-    
+
     if not user:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="User not found"
-        )
-    
-    # ✅ Проверяем что аккаунт активен
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="User not found")
     if not user.is_active:
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="Account is deactivated"
-        )
-    
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Account is deactivated")
+
     return user
 
 
 async def require_admin(user: User = Depends(get_current_user)) -> User:
-    if user.role not in {"superadmin", "moderator"}:
+    # ✅ Enum-сравнение, не строки
+    if user.role not in {RoleEnum.SUPERADMIN, RoleEnum.MODERATOR}:
         raise HTTPException(status_code=403, detail="Forbidden")
     return user
 
 
 async def require_seller(user: User = Depends(get_current_user)) -> User:
-    """✅ Новая зависимость для продавцов"""
-    if user.role not in {"seller", "superadmin"}:
+    # ✅ Enum-сравнение
+    if user.role not in {RoleEnum.SELLER, RoleEnum.SUPERADMIN}:
         raise HTTPException(status_code=403, detail="Seller role required")
     return user
