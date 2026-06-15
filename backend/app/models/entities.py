@@ -154,7 +154,7 @@ class Transaction(Base):
     user_id: Mapped[int] = mapped_column(ForeignKey("user.id"), index=True)
     type: Mapped[str] = mapped_column(String(50), index=True)
     amount: Mapped[Decimal] = mapped_column(Numeric(12, 2))
-    order_id: Mapped[int | None] = mapped_column(ForeignKey("order.id"), nullable=True, index=True)
+    order_id: Mapped[int | None] = mapped_column(ForeignKey("orders.id"), nullable=True, index=True)
     description: Mapped[str] = mapped_column(Text)
     balance_after: Mapped[Decimal] = mapped_column(Numeric(12, 2), default=0)
 

@@ -1,10 +1,16 @@
-# docker-compose.yml � ������� ������ ��� ����������
+﻿# docker-compose.yml — ИСПРАВЛЕННАЯ И ДОПОЛНЕННАЯ ВЕРСИЯ
+# Запуск: docker compose up -d
 
 version: "3.9"
 
 services:
+
+  # ──────────────────────────────────────────
+  # POSTGRESQL — Основная база данных
+  # ──────────────────────────────────────────
   postgres:
     image: postgres:16-alpine
+    container_name: marketplace_postgres
     restart: unless-stopped
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
@@ -15,15 +21,21 @@ services:
     ports:
       - "5432:5432"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - marketplace-net
 
+  # ──────────────────────────────────────────
+  # REDIS — Кэш, сессии, очередь задач
+  # ──────────────────────────────────────────
   redis:
     image: redis:7-alpine
+    container_name: marketplace_redis
     restart: unless-stopped
-    command: redis-server --requirepass ${REDIS_PASSWORD}
+    command: redis-server --requirepass ${REDIS_PASSWORD} --appendonly yes
     volumes:
       - redis-data:/data
     ports:
@@ -31,10 +43,17 @@ services:
     healthcheck:
       test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
       interval: 10s
+      timeout: 5s
       retries: 5
+    networks:
+      - marketplace-net
 
+  # ──────────────────────────────────────────
+  # MINIO — Объектное хранилище (фото товаров)
+  # ──────────────────────────────────────────
   minio:
     image: minio/minio:latest
+    container_name: marketplace_minio
     restart: unless-stopped
     command: server /data --console-address ":9001"
     environment:
@@ -43,30 +62,162 @@ services:
     volumes:
       - minio-data:/data
     ports:
-      - "9000:9000"
-      - "9001:9001"
+      - "9000:9000"   # S3 API
+      - "9001:9001"   # Web Console
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - marketplace-net
 
-   backend:
+  # ──────────────────────────────────────────
+  # BACKEND — FastAPI приложение
+  # ИСПРАВЛЕНО: убран лишний пробел, добавлены
+  # env_file, depends_on, ports, networks
+  # ──────────────────────────────────────────
+  backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
-      target: deps
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-    volumes:
-      - ./backend:/app      # <- hot reload ������ � dev
-  
-   frontend:
+      target: production        # ✅ ИСПРАВЛЕНО: было 'deps' — код не копировался!
+    container_name: marketplace_backend
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env          # ✅ ДОБАВЛЕНО: передача переменных окружения
+    ports:
+      - "8000:8000"             # ✅ ДОБАВЛЕНО: публикация порта
+    depends_on:                 # ✅ ДОБАВЛЕНО: ждём готовности БД и Redis
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - marketplace-net
+
+  # ──────────────────────────────────────────
+  # FRONTEND — React + Nginx
+  # ИСПРАВЛЕНО: добавлены networks
+  # ──────────────────────────────────────────
+  frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    container_name: marketplace_frontend
     restart: unless-stopped
-    env_file: ./frontend/.env
+    env_file:
+      - ./frontend/.env
     ports:
       - "3000:80"
     depends_on:
       - backend
+    networks:
+      - marketplace-net
 
+  # ──────────────────────────────────────────
+  # KONG DB — PostgreSQL для Kong
+  # (отдельная БД, не смешиваем с приложением)
+  # ──────────────────────────────────────────
+  kong-db:
+    image: postgres:16-alpine
+    container_name: marketplace_kong_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: kong
+      POSTGRES_USER: kong
+      POSTGRES_PASSWORD: ${KONG_DB_PASSWORD}
+    volumes:
+      - kong-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kong -d kong"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - marketplace-net
+
+  # ──────────────────────────────────────────
+  # KONG MIGRATIONS — запускается один раз
+  # для инициализации схемы БД Kong
+  # ──────────────────────────────────────────
+  kong-migrations:
+    image: kong:3.6-ubuntu
+    container_name: marketplace_kong_migrations
+    command: kong migrations bootstrap
+    environment:
+      KONG_DATABASE: postgres
+      KONG_PG_HOST: kong-db
+      KONG_PG_DB: kong
+      KONG_PG_USER: kong
+      KONG_PG_PASSWORD: ${KONG_DB_PASSWORD}
+    depends_on:
+      kong-db:
+        condition: service_healthy
+    restart: on-failure    # повторяет, пока БД не будет готова
+    networks:
+      - marketplace-net
+
+  # ──────────────────────────────────────────
+  # KONG — API Gateway
+  # :8000 — HTTP proxy (запросы пользователей)
+  # :8001 — Admin API (настройка Kong)
+  # :8443 — HTTPS proxy
+  # ──────────────────────────────────────────
+  kong:
+    image: kong:3.6-ubuntu
+    container_name: marketplace_kong
+    restart: unless-stopped
+    environment:
+      KONG_DATABASE: postgres
+      KONG_PG_HOST: kong-db
+      KONG_PG_DB: kong
+      KONG_PG_USER: kong
+      KONG_PG_PASSWORD: ${KONG_DB_PASSWORD}
+      KONG_PROXY_ACCESS_LOG: /dev/stdout
+      KONG_ADMIN_ACCESS_LOG: /dev/stdout
+      KONG_PROXY_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_ERROR_LOG: /dev/stderr
+      KONG_PROXY_LISTEN: "0.0.0.0:8000, 0.0.0.0:8443 ssl"
+      KONG_ADMIN_LISTEN: "0.0.0.0:8001"
+    ports:
+      - "8080:8000"    # Kong proxy HTTP (8080 чтобы не конфликтовать с backend)
+      - "8443:8443"    # Kong proxy HTTPS
+      - "8001:8001"    # Kong Admin API (только локально!)
+    depends_on:
+      kong-db:
+        condition: service_healthy
+      kong-migrations:
+        condition: service_completed_successfully
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+    networks:
+      - marketplace-net
+
+# ──────────────────────────────────────────
+# VOLUMES — именованные тома для хранения данных
+# ──────────────────────────────────────────
 volumes:
   postgres-data:
   redis-data:
   minio-data:
+  kong-db-data:
+
+# ──────────────────────────────────────────
+# NETWORKS — изолированная сеть для сервисов
+# ──────────────────────────────────────────
+networks:
+  marketplace-net:
+    driver: bridge

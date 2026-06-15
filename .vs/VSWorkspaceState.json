@@ -2,15 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\backend",
-    "\\backend\\app",
     "\\backend\\app\\api",
     "\\backend\\app\\models",
     "\\backend\\app\\services",
     "\\backend\\app\\services\\delivery",
-    "\\frontend",
     "\\frontend\\src",
     "\\frontend\\src\\api"
   ],
-  "SelectedNode": "\\backend\\app\\main.py",
+  "SelectedNode": "\\backend\\.env",
   "PreviewInSolutionExplorer": false
 }
