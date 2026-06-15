@@ -2,13 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\backend",
-    "\\backend\\app\\api",
-    "\\backend\\app\\models",
-    "\\backend\\app\\services",
-    "\\backend\\app\\services\\delivery",
-    "\\frontend\\src",
+    "\\backend\\alembic\\versions",
+    "\\frontend",
     "\\frontend\\src\\api"
   ],
-  "SelectedNode": "\\backend\\.env",
+  "SelectedNode": "\\frontend\\.env",
   "PreviewInSolutionExplorer": false
 }

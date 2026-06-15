@@ -187,10 +187,10 @@ services:
       KONG_ADMIN_ERROR_LOG: /dev/stderr
       KONG_PROXY_LISTEN: "0.0.0.0:8000, 0.0.0.0:8443 ssl"
       KONG_ADMIN_LISTEN: "0.0.0.0:8001"
-    ports:
-      - "8080:8000"    # Kong proxy HTTP (8080 чтобы не конфликтовать с backend)
-      - "8443:8443"    # Kong proxy HTTPS
-      - "8001:8001"    # Kong Admin API (только локально!)
+      ports:
+        - "8080:8000"   # ✅ 8080 снаружи → 8000 внутри контейнера
+        - "8443:8443"   # HTTPS
+        - "8001:8001"   # Admin API
     depends_on:
       kong-db:
         condition: service_healthy
