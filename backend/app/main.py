@@ -8,7 +8,7 @@ from fastapi.responses import JSONResponse
 from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
 from sqlalchemy import select
-
+from app.utils.token_blacklist import close_redis_client
 from app.api.router import api_router
 from app.core.config import settings
 from app.core.db import AsyncSessionLocal
@@ -23,10 +23,10 @@ logger = logging.getLogger(__name__)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """Инициализация при старте приложения"""
     await _seed_settings()
     logger.info("Application started")
     yield
+    await close_redis_client()   # <- добавить
     logger.info("Application shutdown")
 
 

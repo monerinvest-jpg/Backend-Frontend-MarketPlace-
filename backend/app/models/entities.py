@@ -112,7 +112,7 @@ class CartItem(Base):
 
 
 class Order(TimestampMixin, Base):
-    __tablename__ = "order"
+    __tablename__ = "orders"
 
     id: Mapped[int] = mapped_column(primary_key=True)
     buyer_id: Mapped[int] = mapped_column(ForeignKey("user.id"), index=True)
@@ -129,7 +129,7 @@ class OrderItem(Base):
     __tablename__ = "order_item"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    order_id: Mapped[int] = mapped_column(ForeignKey("order.id"), index=True)
+    order_id: Mapped[int] = mapped_column(ForeignKey("orders.id"), index=True)
     product_id: Mapped[int] = mapped_column(ForeignKey("product.id"), index=True)
     quantity: Mapped[int] = mapped_column(default=1)
     price_at_time: Mapped[Decimal] = mapped_column(Numeric(12, 2))
@@ -139,7 +139,7 @@ class Payment(Base):
     __tablename__ = "payment"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    order_id: Mapped[int] = mapped_column(ForeignKey("order.id"), index=True)
+    order_id: Mapped[int] = mapped_column(ForeignKey("orders.id"), index=True)
     gateway: Mapped[str] = mapped_column(String(50), index=True)
     gateway_payment_id: Mapped[str] = mapped_column(String(255), index=True)
     amount: Mapped[Decimal] = mapped_column(Numeric(12, 2))
@@ -163,7 +163,7 @@ class DeliveryInfo(Base):
     __tablename__ = "delivery_info"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    order_id: Mapped[int] = mapped_column(ForeignKey("order.id"), index=True)
+    order_id: Mapped[int] = mapped_column(ForeignKey("orders.id"), index=True)
     delivery_service: Mapped[str] = mapped_column(String(50), default="cdek")
     tracking_number: Mapped[str | None] = mapped_column(String(100), nullable=True, index=True)
     cost: Mapped[Decimal] = mapped_column(Numeric(12, 2), default=0)
@@ -256,3 +256,45 @@ class Settings(Base):
 
 
 Index("ix_product_text", Product.title, Product.description)
+
+class BalanceTransaction(Base):
+    __tablename__ = "balance_transaction"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("user.id"), index=True)
+    amount: Mapped[Decimal] = mapped_column(Numeric(12, 2))
+    type: Mapped[str] = mapped_column(String(50))
+    description: Mapped[str] = mapped_column(Text)
+
+class Review(TimestampMixin, Base):
+    __tablename__ = "review"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    product_id: Mapped[int] = mapped_column(ForeignKey("product.id"), index=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("user.id"), index=True)
+    rating: Mapped[int] = mapped_column()
+    text: Mapped[str | None] = mapped_column(Text, nullable=True)
+
+class Coupon(Base):
+    __tablename__ = "coupon"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    code: Mapped[str] = mapped_column(String(50), unique=True, index=True)
+    discount_percent: Mapped[Decimal] = mapped_column(Numeric(5, 2))
+    is_active: Mapped[bool] = mapped_column(Boolean, default=True)
+
+class Favorite(Base):
+    __tablename__ = "favorite"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("user.id"), index=True)
+    product_id: Mapped[int] = mapped_column(ForeignKey("product.id"), index=True)
+
+class Report(Base):
+    __tablename__ = "report"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    reporter_id: Mapped[int] = mapped_column(ForeignKey("user.id"), index=True)
+    product_id: Mapped[int] = mapped_column(ForeignKey("product.id"), nullable=True)
+    reason: Mapped[str] = mapped_column(Text)
+
+class Settings(Base):
+    __tablename__ = "settings"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    key: Mapped[str] = mapped_column(String(100), unique=True, index=True)
+    value: Mapped[str] = mapped_column(String(500))

@@ -14,8 +14,9 @@ router = APIRouter(prefix="/products", tags=["products"])
 
 @router.get("", response_model=dict)
 @limiter.limit("60/minute")
+from fastapi import Request
 async def list_products(
-    request,                                    # нужен для limiter
+    request: Request,
     skip: int = Query(0, ge=0),
     limit: int = Query(20, ge=1, le=100),       # ✅ Максимум 100 за раз
     category_id: int | None = Query(None),
